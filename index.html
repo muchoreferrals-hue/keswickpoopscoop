@@ -870,3 +870,270 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
       big: true
     };
   }
+    function perVisitFor(dogs, adder){ return 20 + 5*dogs + adder; }
+  function calcPrice(){
+    var dogs = +$("dogs").value;
+    var sq = Math.max(200, +$("sqftN").value || 0);
+    var t = tierFor(sq);
+    var yard = t.adder;
+    var f = FREQ[$("freq").value];
+    var base = perVisitFor(dogs, yard);
+    $("sqftV").textContent = sq.toLocaleString("en-CA");
+    var tEl = $("tier");
+    tEl.textContent = t.name + " · " + t.note;
+    tEl.className = "tier" + (t.big ? " big" : "");
+    var perVisit = base * f.perVisitMult;
+    var addMonthly = 0, addPerVisit = 0, names = [];
+    var opts = $("addons").options;
+    for (var i=0;i<opts.length;i++){
+      if(!opts[i].selected) continue;
+      var v = opts[i].value;
+      if(v === "10"){ addMonthly += 10; names.push("haul-away $10/mo"); }
+      else if(v === "35"){ addMonthly += 35; names.push("deodorize $35"); }
+      else if(v === "8v"){ addPerVisit += 8; names.push("front yard +$8/visit"); }
+      else if(v === "5w"){ addPerVisit += 5; names.push("winter +$5/visit"); }
+    }
+    var visitTotal = perVisit + addPerVisit;
+    var monthly = visitTotal * f.visitsMo + addMonthly;
+    var monthlyRounded = Math.round(monthly/5)*5;
+    var first = t.first;
+    // her effective hourly at 10 min/stop
+    var hourly = visitTotal * 6;
+    $("oVisit").textContent = "$" + visitTotal.toFixed(2).replace(/\.00$/,"");
+    $("oVisits").textContent = f.label;
+    $("oMonth").textContent = money(monthlyRounded);
+    $("oFirst").textContent = money(first);
+    $("oHour").textContent = money(hourly);
+    $("oHourH").textContent = "at 10 min per stop, before costs";
+    var line = "($20 base + $" + (5*dogs) + " dogs " + (yard<0?"− $"+Math.abs(yard):"+ $"+yard) + " yard @ " + sq.toLocaleString("en-CA") + " sq ft) × " + f.perVisitMult.toFixed(3) + " " + f.wk;
+    if(addPerVisit) line += " + $" + addPerVisit + " per-visit add-ons";
+    line += "  =  $" + visitTotal.toFixed(2) + " per visit × " + f.visitsMo + " visits";
+    if(addMonthly) line += " + $" + addMonthly + " monthly add-ons";
+    line += "  =  " + money(monthly) + " → quote " + money(monthlyRounded) + " + HST";
+    $("formula").textContent = line;
+  }
+  ["dogs","freq","addons"].forEach(function(id){
+    $(id).addEventListener("change", calcPrice);
+  });
+  $("sqft").addEventListener("input", function(){
+    $("sqftN").value = $("sqft").value;
+    calcPrice();
+  });
+  $("sqftN").addEventListener("input", function(){
+    var v = +$("sqftN").value || 0;
+    $("sqft").value = Math.min(26000, Math.max(500, v));
+    calcPrice();
+  });
+  calcPrice();
+  /* ---------------- printable price grid ---------------- */
+  (function(){
+    var rows = "";
+    TIERS.forEach(function(t, i){
+      var label = ["Small · under 2,500 sq ft",
+                   "Standard · 2,500–5,000 sq ft",
+                   "Large · 5,000–10,000 sq ft",
+                   "Extra large · 10,000 sq ft – ½ acre"][i];
+      rows += '<tr' + (i === 1 ? ' class="hi"' : '') + '><td class="name">' + label
+            + (i === 1 ? '<br><span class="dim" style="font-weight:400">most Keswick yards</span>' : '') + '</td>';
+      for (var d = 1; d <= 4; d++){
+        var pv = perVisitFor(d, t.adder);
+        var mo = Math.round(pv * 4.33 / 5) * 5;
+        rows += '<td class="n">$' + pv + ' <span class="dim">/ visit</span><br><strong>$' + mo + ' / mo</strong></td>';
+      }
+      rows += '<td class="n">$' + t.first + '</td></tr>';
+    });
+    rows += '<tr><td class="name">Over ½ acre</td><td class="n dim" colspan="4">Quote in person — add $8 per visit for every extra quarter-acre</td><td class="n dim">$179+</td></tr>';
+    $("grid").innerHTML =
+      '<table><thead><tr><th>Back yard walked</th><th class="n">1 dog</th><th class="n">2 dogs</th>' +
+      '<th class="n">3 dogs</th><th class="n">4 dogs</th><th class="n">First clean</th></tr></thead><tbody>' +
+      rows + '</tbody></table>';
+  })();
+  /* ---------------- profit model ---------------- */
+  var VAR_PER_CUST = 9;      // bags, fuel share, disposal, processing
+  var WAGE = 22 * 1.14;      // + CPP/EI/WSIB/vacation
+  function adminHrs(c, mode){
+    // sales, invoicing, texts — grows with the book; + 2.5 hrs managing someone
+    return (mode === "solo" ? 0 : 2.5) + Math.max(0.5, c * 0.03);
+  }
+  function fixedFor(c){
+    if(c < 15) return 200;   // insurance + phone + flyers
+    if(c < 30) return 275;   // + light software
+    return 375;              // + software, marketing, misc
+  }
+  function calcModel(){
+    var c = +$("cust").value;
+    var tick = +$("tick").value;
+    var mode = $("mode").value;
+    var stop = +$("stop").value;
+    $("custV").textContent = c;
+    $("tickV").textContent = "$" + tick;
+    $("stopV").textContent = stop;
+    var rev = c * tick;
+    var routeHrsWk = c * stop / 60;
+    var hireStops = mode === "solo" ? 0 : (mode === "hire" ? c : Math.max(0, c - 12));
+    var herStops = c - hireStops;
+    var hireHrsWk = hireStops * stop / 60 * 1.15;   // 15% buffer for travel to route + setup
+    var admin = adminHrs(c, mode);
+    var herHrsWk = herStops * stop / 60 + admin;
+    var labour = hireHrsWk * 4.33 * WAGE;
+    var costs = c * VAR_PER_CUST + fixedFor(c) + labour;
+    var net = rev - costs;
+    $("mRev").textContent = money(rev);
+    $("mRevH").textContent = c + " customers × $" + tick;
+    $("mCost").textContent = money(costs);
+    $("mCostH").textContent = labour > 0
+      ? money(labour) + " wages + " + money(costs - labour) + " running costs"
+      : money(c*VAR_PER_CUST) + " variable + " + money(fixedFor(c)) + " fixed";
+    $("mNet").textContent = money(net);
+    var nv = $("mNet");
+    nv.className = "v" + (net < 5000 ? " warn" : "");
+    $("mNetH").textContent = net >= 5000
+      ? "target cleared by " + money(net - 5000)
+      : money(5000 - net) + " short of $5,000";
+    $("mHrs").textContent = herHrsWk.toFixed(1);
+    var hv = $("mHrs");
+    hv.className = "v" + (herHrsWk > 2.5 ? " warn" : "");
+    $("mHrsH").textContent = herHrsWk <= 2.5
+      ? "fits the 2-hour constraint"
+      : herStops + " stops + " + admin.toFixed(1) + " hrs admin";
+    var f = "Route: " + c + " stops × " + stop + " min = " + routeHrsWk.toFixed(1) + " hrs/wk.  ";
+    f += mode === "solo"
+      ? "She runs all of it."
+      : "Hire covers " + hireStops + " stops (" + hireHrsWk.toFixed(1) + " hrs/wk incl. 15% buffer) at $" + WAGE.toFixed(2) + "/hr loaded = " + money(labour) + "/mo.";
+    f += "  Net is pre-personal-tax; set aside ~25% for CRA.";
+    $("mFormula").textContent = f;
+  }
+  ["cust","tick","mode","stop"].forEach(function(id){
+    $(id).addEventListener("input", calcModel);
+    $(id).addEventListener("change", calcModel);
+  });
+  calcModel();
+  /* ---------------- the 12-week plan ---------------- */
+  var PLAN = [
+    { w:"1", tag:"Sept", h:"Be findable and buyable", goal:"Goal: a stranger can find you, price you, and pay you — by Sunday night.",
+      steps:[
+        ["15","Pick a name that says the town and the job out loud. <em>Keswick Scoop Co.</em> is fine. Check the Facebook handle is free. Do not design a logo."],
+        ["20","Create a <strong>Google Business Profile</strong> as a service-area business so your home address stays hidden. Do this first — verification takes 1–2 weeks and it's the single biggest source of free local leads."],
+        ["15","Facebook business page (cover photo = a real before/after of your own yard) plus a Facebook Marketplace listing under Services. Marketplace is free, evergreen, and generates DMs while you sleep."],
+        ["15","Write the price card into your Notes app. One screen. Nothing printed yet."],
+        ["20","Buy the kit: metal rake + pan scooper, heavy-duty bags, nitrile gloves, spray bottle of dilute bleach, boot brush, a lidded tote for the trunk. Budget $150."],
+        ["10","Open a dedicated e-transfer email address. Never mix this money with household money."],
+        ["25","Text five dog-owning people you already know. Use script #1. This is where your first customer almost certainly comes from."]
+      ]},
+    { w:"2", tag:"Sept", h:"60 doors and three group posts", goal:"Goal: 10+ genuine inquiries. Volume of the right doors, not any doors.",
+      steps:[
+        ["20","Print 120 half-page flyers — home printer or Staples in Newmarket, about $18. Script #3 is the copy."],
+        ["60","Walk 60 <strong>targeted</strong> doors in your own subdivision. Only houses showing a dog signal: a bowl on the porch, a Beware of Dog sign, a fenced yard, a doghouse, a chewed ball on the lawn. Forty targeted doors beat four hundred random ones."],
+        ["20","Post script #2 in three Georgina/Keswick community Facebook groups. Post as a neighbour, not as an ad — most groups delete ads and some ban the poster."],
+        ["20","Reply to every message the same day. Book the free first cleans for next weekend."]
+      ]},
+    { w:"3", tag:"Sept", h:"Do the free first cleans", goal:"Goal: 3–5 yards done, photographed, and reviewed.",
+      steps:[
+        ["90","Free first clean for your first five. A neglected yard runs 20–40 minutes — this is the slowest work you'll ever do here, and it's deliberate."],
+        ["15","Before and after photo of every yard, same angle. These photos are your marketing for the next six months."],
+        ["15","Text each customer the same evening asking for a Google review, with the direct link. Ask on the day it happened or you won't get it. Script #6."]
+      ]},
+    { w:"4", tag:"Oct", h:"First paid route, plus 60 more doors", goal:"Goal: five paying customers and a route that takes under an hour.",
+      steps:[
+        ["45","Run the weekly route. Time every stop on your phone. That number decides whether the $5,000 model is real."],
+        ["50","60 more doors — <strong>only on streets adjacent to a customer you already have</strong>. Density is the whole business."],
+        ["15","Post the before/after photos back into the Facebook groups with a plain caption. Proof beats persuasion."],
+        ["10","<strong>Gate check:</strong> five paying at $110, or figure out which of the two is wrong — the offer or the price."]
+      ]},
+    { w:"5–8", tag:"Oct–Nov", h:"Repeat, compound, ask", goal:"Goal: 10–12 customers. The 2-hour ceiling.",
+      steps:[
+        ["45","Route first, every week, same day and time. Reliability is the product."],
+        ["45","60 doors a week on adjacent streets. Keep a marked-up paper map of what you've covered."],
+        ["15","Ask every customer once for one referral: $20 off next month for both of you. Script #7."],
+        ["15","Drop referral cards at Pet Valu Keswick, the local vet clinics, the groomers, and Hiking Tails Pet Services. Offer 20% of a referred customer's first month."],
+        ["—","Early November: put the winter question to every customer — carry on at +$5 a visit, or pause with a pre-booked $119 Spring Reset. Take the deposit either way."]
+      ]},
+    { w:"9–12", tag:"Nov–Dec", h:"Decide who runs the route", goal:"Goal: an answer, not more customers.",
+      steps:[
+        ["30","Read your own numbers: customers, cancellations, average stop time, revenue per hour. Run them through the model above."],
+        ["30","Pick one: your husband takes Saturday 8–10 (free, caps out around 28 customers), or you hire a scooper at $22/hour (costs money, unlocks 67)."],
+        ["30","If hiring: post in the same Facebook groups. You want a reliable local teenager or a retiree with a truck, not a career hire. Trial them on your own route for two Saturdays before handing over keys and gate codes."],
+        ["30","Plan route day two — Sutton and Jackson's Point — for a March opening, timed to the spring rush, which is the single biggest selling window of the year."]
+      ]}
+  ];
+  var weeksEl = $("weeks");
+  var html = "";
+  PLAN.forEach(function(wk, wi){
+    html += '<div class="week"><div class="wnum"><div class="n">' + wk.w + '</div><div class="t">' + wk.tag + '</div></div>';
+    html += '<div class="wbody"><h3>' + wk.h + '</h3><p class="goal">' + wk.goal + '</p><ul class="steps">';
+    wk.steps.forEach(function(s, si){
+      var id = "s" + wi + "_" + si;
+      html += '<li><input type="checkbox" id="' + id + '" data-k="' + id + '"><span class="mins">' + s[0] + (s[0]==="—"?"":" m") + '</span><span>' + s[1] + '</span></li>';
+    });
+    html += '</ul></div></div>';
+  });
+  weeksEl.innerHTML = html;
+  var KEY = "keswick-scoop-plan-v1";
+  function readState(){
+    try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ return {}; }
+  }
+  function writeState(s){
+    try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){ /* private mode — fine */ }
+  }
+  function paint(){
+    var boxes = weeksEl.querySelectorAll('input[type=checkbox]');
+    var done = 0;
+    boxes.forEach(function(b){
+      b.parentNode.classList.toggle("done", b.checked);
+      if(b.checked) done++;
+    });
+    $("progress").textContent = done ? "· " + done + " of " + boxes.length + " done" : "";
+  }
+  var state = readState();
+  weeksEl.querySelectorAll('input[type=checkbox]').forEach(function(b){
+    if(state[b.dataset.k]) b.checked = true;
+    b.addEventListener("change", function(){
+      var s = readState();
+      if(b.checked) s[b.dataset.k] = 1; else delete s[b.dataset.k];
+      writeState(s);
+      paint();
+    });
+  });
+  paint();
+  /* ---------------- scripts ---------------- */
+  var SCRIPTS = [
+    ["1 · Text to five people you already know",
+"Hey! Random one — I'm starting a little dog poop pickup service here in Keswick. Weekly, I take everything away, $110 a month.\n\nTwo questions: would you want it? And if not, do you know anyone with a dog and a back yard who might? I'm looking for my first five customers and the first cleanup is free.\n\nNo pressure at all — a name would help me just as much as a yes."],
+    ["2 · Facebook community group post",
+"Hi neighbours 👋 I'm a mum here in Keswick and I've just started a small dog waste pickup service — the unglamorous job nobody wants to do on a Saturday.\n\nWeekly pickup, I bag it and take it away, I send you a photo of the finished yard and confirm your gate is latched, and I disinfect my boots and tools between every yard (parvo travels, and nobody around here seems to mention that).\n\n$110/month + HST for one dog and a normal-sized back yard. Two dogs $130. Bigger yard, we'll sort it out.\n\nI'm looking for my first 5 local customers and I'll do the first big cleanup free — that's usually a $89–$150 job. All I ask is an honest review after a few weeks.\n\nI live right here in Keswick, so I'm not driving up from Newmarket and fitting you in at the end of a route. Message me if you want your yard back."],
+    ["3 · Half-page flyer copy",
+"YOUR DOG'S MESS. GONE. EVERY WEEK.\n\nI'm [name] — I live on [street], three minutes from your door.\n\n· Weekly pickup, all waste taken away\n· $110/month + HST · one dog, standard yard\n· Photo of the finished yard + gate confirmation, every visit\n· Boots and tools disinfected between every yard\n· No contract. Cancel any time.\n\nFIRST CLEANUP FREE for my first 5 Keswick customers (normally $89).\n\nText or call: [number]\nSee before-and-afters: [Facebook page]\n\nLocal. Not a franchise. Not driving up from Newmarket."],
+    ["4 · If someone opens the door (20 seconds)",
+"\"Hi — sorry to bother you. I'm [name], I live over on [street]. I've just started doing weekly dog poop pickup here in Keswick and I'm knocking on the doors that look like they've got a dog.\n\nIt's $110 a month, I come the same day every week, and I take everything away with me. I'm doing the first big cleanup free for my first few customers.\n\nHere's a flyer — no pressure at all. Have a good one.\"\n\n(Then leave. Do not pitch twice. The flyer does the second half.)"],
+    ["5 · When they say it's too expensive",
+"\"Totally fair — it works out to about $25 a week. Most people think about it as: is a Saturday morning in the yard worth $25 to you?\n\nIf weekly's too much, I do every-other-week at $38 a visit. It's a bit more per visit because there's twice as much to pick up.\n\nAnd honestly, if it's not for you right now, that's fine — could I leave a card in case it changes over the winter?\"\n\n(Never discount the monthly price. Give away the first cleanup instead — it costs you 30 minutes and it's worth $89 to them.)"],
+    ["6 · Review request, sent the same evening",
+"Hi [name]! Thanks so much for letting me sort the yard out today — it looked rough and now it doesn't 😄\n\nWould you mind leaving a quick Google review? I'm brand new and honestly the first handful of reviews decide whether this works or not. Takes about 30 seconds: [link]\n\nSee you [day] for the first weekly run."],
+    ["7 · The referral ask (once, around week 4)",
+"Quick ask — do you know one other person in Keswick with a dog and a back yard?\n\nIf you send them my way and they sign up, I'll take $20 off your next month and $20 off their first one. That's it, no catch. Word of mouth is basically my whole marketing budget."]
+  ];
+  var sEl = $("scripts"), sHtml = "";
+  SCRIPTS.forEach(function(s, i){
+    sHtml += '<div class="script"><div class="head"><h4>' + s[0] + '</h4>'
+          +  '<button class="copy" data-i="' + i + '" type="button">Copy</button></div>'
+          +  '<div class="body" id="sc' + i + '"></div></div>';
+  });
+  sEl.innerHTML = sHtml;
+  SCRIPTS.forEach(function(s, i){ $("sc"+i).textContent = s[1]; });
+  sEl.addEventListener("click", function(e){
+    var b = e.target.closest(".copy");
+    if(!b) return;
+    var txt = SCRIPTS[+b.dataset.i][1];
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(txt).then(function(){
+        b.textContent = "Copied";
+        setTimeout(function(){ b.textContent = "Copy"; }, 1600);
+      }, function(){ b.textContent = "Select it"; });
+    } else {
+      b.textContent = "Select it";
+    }
+  });
+})();
+</script>
+</body>
+</html>
