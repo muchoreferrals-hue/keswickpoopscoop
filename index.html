@@ -226,7 +226,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
 </style>
 <div class="wrap">
 <div class="topquote">
-  <span class="lbl">Quick quote · Turf &amp; Tail · per month + HST</span>
+  <span class="lbl">Quick quote · Turf &amp; Tail · prices + HST</span>
   <div class="tool" id="quote">
     <div class="controls">
       <div class="ctrl">
@@ -663,6 +663,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   /* ---------------- quick quote ---------------- */
   var P = {w:[99,115,129], e:[79,89,99], m:[65,75,85]};   // 1-dog price by yard: compact, standard, large
   var X = {w:20, e:20, m:15};                            // each extra dog
+  var ONE_TIME = [99,119,139];                           // One-time Cleanup by yard, 1–2 dogs
   var NAMES = {w:["Weekly · most popular","about 4.3 visits a month · $89 cleanup credited if started within 7 days"], e:["Every other week","about 2.2 visits a month · not advertised"], m:["Monthly Reset","1 visit a month · quote only"]};
   var quoteEl = $("quote");
   function picked(n){ var r = quoteEl.querySelector('input[name="'+n+'"]:checked'); return r ? +r.value : 0; }
@@ -678,12 +679,18 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
       var hEl = document.createElement("div"); hEl.className = "h"; hEl.textContent = "/mo + HST · " + NAMES[k][1];
       cell.appendChild(kEl); cell.appendChild(vEl); cell.appendChild(hEl); out.appendChild(cell);
     });
+    // One-time Cleanup: repeat caller or restart, priced by yard, never credited; 3+ dogs and Estate are quoted
+    var one = document.createElement("div");
+    var oK = document.createElement("div"); oK.className = "k"; oK.textContent = "One-time Cleanup";
+    var oV = document.createElement("div"); oV.className = "v"; oV.textContent = (y === 3 || d >= 3) ? "Quote" : money(ONE_TIME[y]);
+    var oH = document.createElement("div"); oH.className = "h"; oH.textContent = "per visit + HST · repeat or restart, no plan · no credit · new clients start at the $89 Initial Cleanup";
+    one.appendChild(oK); one.appendChild(oV); one.appendChild(oH); out.appendChild(one);
     var deo = $("qDeo");
     if($("deo").checked && y === 3){ deo.hidden = false; deo.textContent = "Deodorizing on an Estate or rural lot: quote it with the yard."; }
     else { deo.hidden = true; }
     var w = $("qWarn");
     if(y === 3){ w.hidden = false; w.textContent = "Estate or rural lot: quote the plan and the cleanup in person."; }
-    else if(d >= 3){ w.hidden = false; w.textContent = "3+ dogs: the monthly math above applies, but quote the cleanup in person."; }
+    else if(d >= 3){ w.hidden = false; w.textContent = "3+ dogs: the monthly math above applies, but quote the Initial and One-time Cleanups in person."; }
     else { w.hidden = true; }
   }
   quoteEl.addEventListener("input", calcQuote);
