@@ -406,7 +406,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
         <label>Optional add-ons</label>
         <div class="addon"><input type="checkbox" id="haul"><label for="haul">Haul-Away</label><span class="dim">$20/mo, any plan</span></div>
         <div class="addon"><input type="checkbox" id="deo"><label for="deo">Deodorizing</label>
-          $<input type="number" id="deoPrice" value="35" min="35" step="5" aria-label="Deodorizing price per treatment"><span class="dim">per treatment · from $35, by yard size</span></div>
+          $<input type="number" id="deoPrice" value="35" min="35" step="5" aria-label="Deodorizing price per month"><span class="dim">/mo · from $35, by yard size</span></div>
       </div>
     </div>
     <div class="out" id="qOut" aria-live="polite"></div>
@@ -468,7 +468,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
         <tr><td>One-time Cleanup, repeat or restart (Compact / Standard / Large)</td><td class="n">$99 / $119 / $139</td></tr>
         <tr><td>Spring Reset after a winter pause</td><td class="n">$89</td></tr>
         <tr><td>Haul-Away add-on</td><td class="n">+$20/mo</td></tr>
-        <tr><td>Deodorizing add-on, per treatment, by yard size</td><td class="n">from $35</td></tr>
+        <tr><td>Deodorizing add-on, any plan, by yard size</td><td class="n">from +$35/mo</td></tr>
       </tbody>
     </table>
   </div>
@@ -663,7 +663,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   function picked(n){ var r = quoteEl.querySelector('input[name="'+n+'"]:checked'); return r ? +r.value : 0; }
   function calcQuote(){
     var y = picked("yard"), d = picked("dogs");
-    var add = $("haul").checked ? 20 : 0;
+    var add = ($("haul").checked ? 20 : 0) + ($("deo").checked ? Math.max(35, +$("deoPrice").value || 0) : 0);
     var out = $("qOut"); out.textContent = "";
     ["w","e","m"].forEach(function(k){
       var cell = document.createElement("div");
@@ -674,8 +674,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
       cell.appendChild(kEl); cell.appendChild(vEl); cell.appendChild(hEl); out.appendChild(cell);
     });
     var deo = $("qDeo");
-    if($("deo").checked && y !== 3){ deo.hidden = false; deo.textContent = "Plus deodorizing: " + money(Math.max(35, +$("deoPrice").value || 0)) + " + HST per treatment, billed when it's done (not in the monthly price)."; }
-    else if($("deo").checked){ deo.hidden = false; deo.textContent = "Deodorizing on an Estate or rural lot: quote it with the yard."; }
+    if($("deo").checked && y === 3){ deo.hidden = false; deo.textContent = "Deodorizing on an Estate or rural lot: quote it with the yard."; }
     else { deo.hidden = true; }
     var w = $("qWarn");
     if(y === 3){ w.hidden = false; w.textContent = "Estate or rural lot: quote the plan and the cleanup in person."; }
