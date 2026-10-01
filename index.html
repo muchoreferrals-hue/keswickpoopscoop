@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>First Five in Keswick</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Turf &amp; Tail · First Five</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
@@ -142,6 +143,28 @@ input[type=number]{
 .out .v.warn{color:var(--signal);}
 .out .h{font-size:.84rem; color:var(--ink-3); margin-top:.2em;}
 .formula{font-family:"IBM Plex Mono",monospace; font-size:.86rem; color:var(--ink-2); background:var(--surface-2); border:1px dashed var(--line-strong); padding:14px 16px; margin-top:18px; overflow-x:auto;}
+/* ---------- quick quote ---------- */
+.seg{display:flex; flex-wrap:wrap; gap:8px;}
+.seg input{position:absolute; opacity:0; pointer-events:none;}
+.ctrl .seg label{
+  display:block; margin:0; cursor:pointer; padding:9px 13px; min-width:0;
+  font-size:.95rem; font-weight:600; letter-spacing:0; text-transform:none; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--line-strong); border-radius:2px;
+}
+.ctrl .seg label small{display:block; font-weight:500; font-size:.74rem; color:var(--ink-3);}
+.seg input:checked+label{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink);}
+.seg input:focus-visible+label{outline:2px solid var(--signal); outline-offset:3px;}
+.addon{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:8px; font-size:.95rem;}
+.ctrl .addon label{display:inline; margin:0; font-size:.95rem; letter-spacing:0; text-transform:none; color:var(--ink); font-weight:600;}
+.addon input[type=checkbox]{width:17px; height:17px; margin:0; accent-color:var(--accent);}
+.addon input[type=number]{width:72px; margin:0; padding:5px 8px;}
+.addon .dim{font-size:.84rem;}
+.out .best, .out .best div{background:var(--accent-soft);}
+.out .best .k{color:var(--accent-ink);}
+.warnline{background:var(--signal-soft); border-left:3px solid var(--signal); padding:10px 14px; margin-top:14px; font-size:.92rem;}
+.tag{font-size:.62em; vertical-align:middle; margin-left:6px;}
+.rates table{min-width:0;}
+.rates td.name{white-space:normal;}
 /* ---------- week plan ---------- */
 .weeks{margin-top:34px; display:flex; flex-direction:column; gap:0;}
 .week{display:grid; grid-template-columns:88px 1fr; gap:0; border-top:1px solid var(--line-strong);}
@@ -201,7 +224,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
 </style>
 <div class="wrap">
 <header class="mast">
-  <p class="kicker">Georgina · Ontario · Lean launch brief</p>
+  <p class="kicker">Turf &amp; Tail · <a href="https://turfandtail.ca">turfandtail.ca</a> · Georgina, Ontario · Partners only, not for clients</p>
   <h1>First Five in Keswick</h1>
   <p class="thesis">A dog waste route is one of the few businesses you can genuinely start in a Saturday morning. But <strong>two hours a week will not build a $5,000/month business</strong> — it will build a real $750-a-month one, which is exactly what you need first. This is the shortest line from zero customers to five, and from five to the number that actually pays $5,000.</p>
   <div class="stats">
@@ -217,7 +240,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     </div>
     <div class="stat">
       <div class="cap">$5,000 net, one hire</div>
-      <div class="big">67</div>
+      <div class="big">67–70</div>
       <div class="sub">customers · scooper runs the route, <strong>you work ≈ 4.5 hrs/week</strong> on sales and admin.</div>
     </div>
   </div>
@@ -227,10 +250,10 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   <div class="prose">
     <h2>What the two-hour constraint actually buys</h2>
     <p>A weekly maintenance stop in a Keswick subdivision takes about 7 minutes in the yard plus 3–5 minutes of driving when the route is tight. Call it <strong>10–12 minutes per customer, all in</strong>. Two hours a week is therefore a hard ceiling of roughly <strong>9 or 10 customers</strong> — and that's counting the invoicing, the texting, and the "can you come Thursday instead" messages inside the two hours.</p>
-    <p>That is not a failure. Nine customers proves five things you cannot learn any other way: that Keswick will pay $110/month, that your stop time estimate is right, that people don't cancel in week three, that referrals happen, and that you can physically stand doing it. Every one of those is a number the $5,000 model depends on. Get them cheap, get them fast, then decide whether to buy more hours.</p>
+    <p>That is not a failure. Nine customers proves five things you cannot learn any other way: that Keswick will pay $115/month for a Standard yard, that your stop time estimate is right, that people don't cancel in week three, that referrals happen, and that you can physically stand doing it. Every one of those is a number the $5,000 model depends on. Get them cheap, get them fast, then decide whether to buy more hours.</p>
     <div class="callout">
       <span class="lbl">The real decision, deferred to week 12</span>
-      <p>You are not choosing between "small business" and "$5,000 business" today. You are buying data for about $150 and eight Saturday mornings. At week 12 you'll know whether the route is worth handing to a $22/hour scooper — and that hire, not more of your own hours, is what makes $5,000 possible.</p>
+      <p>You are not choosing between "small business" and "$5,000 business" today. You are buying data for about $150 and eight Saturday mornings. At week 12 you'll know whether the route is worth handing to a $22–$25/hour scooper — and that hire, not more of your own hours, is what makes $5,000 possible.</p>
     </div>
   </div>
 </section>
@@ -253,7 +276,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     </table>
   </div>
   <div class="prose">
-    <p>So Keswick can carry the solo $5,000 business, but the 67-customer version with an employee sits near the top of what one town supports. <strong>Plan the second route day now, and open it at ~35 customers:</strong> Sutton and Jackson's Point are 12 minutes east and no competitor is based there either. Georgina as a whole holds roughly 5,000 dog-plus-yard households, which puts 67 customers at a comfortable 1.3%.</p>
+    <p>So Keswick can carry the solo $5,000 business, but the 67–70-customer version with an employee sits near the top of what one town supports. <strong>Plan the second route day now, and open it at ~35 customers:</strong> Sutton and Jackson's Point are 12 minutes east and no competitor is based there either. Georgina as a whole holds roughly 5,000 dog-plus-yard households, which puts 70 customers at a comfortable 1.4%.</p>
   </div>
 </section>
 <section>
@@ -276,9 +299,9 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
           <td class="n">$53.80 / wk<br><span class="dim">≈ $233 / mo</span></td><td class="n">$75 min (15 min)<br><span class="dim">+ $5 / min</span></td><td><span class="pill no">Yes</span></td>
         </tr>
         <tr>
-          <td class="name">Woof Waste Warriors</td><td>Newmarket, Aurora, E. Gwillimbury, Mount Albert</td>
-          <td class="n">$90 / mo<br><span class="dim">$20.79 / visit</span></td><td class="n">$100 / mo</td>
-          <td class="n">$120 / mo<br><span class="dim">$13.85 / visit</span></td><td class="n">$100 + $20 haul</td><td><span class="pill no">Yes</span></td>
+          <td class="name">Woof Waste Warriors</td><td>Newmarket, Aurora, E. Gwillimbury, Mount Albert · Keswick not in their published area · part-time</td>
+          <td class="n">$90 / mo<br><span class="dim">$20.79 / visit · $70 every other week</span></td><td class="n">$100 / mo</td>
+          <td class="n">$120 / mo<br><span class="dim">$13.85 / visit</span></td><td class="n">$100 – $145<br><span class="dim">one-time, by dog count</span></td><td><span class="pill no">Yes</span></td>
         </tr>
         <tr>
           <td class="name">Pawticular Paws</td><td>Durham (Whitby, Oshawa, Ajax) — not York</td>
@@ -303,13 +326,21 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
           <td class="n dim">Custom quote</td><td class="n">$88 – $350+</td><td><span class="pill yes">Range only</span></td>
         </tr>
         <tr>
+          <td class="name">Hiking Tails</td><td>Keswick · side service to dog walking and boarding</td>
+          <td class="n">from $30 / visit</td><td class="n dim">—</td><td class="n dim">—</td><td class="n dim">—</td><td><span class="pill no">Partly</span></td>
+        </tr>
+        <tr>
+          <td class="name">Keswick Poop Removal</td><td>Facebook page only · activity unclear</td>
+          <td class="n dim">No pricing</td><td class="n dim">—</td><td class="n dim">—</td><td class="n dim">—</td><td><span class="pill yes">Hidden</span></td>
+        </tr>
+        <tr>
           <td class="name dim">Industry benchmark</td><td class="dim">Canada / North America, 2026</td>
           <td class="n dim">$15 – $30</td><td class="n dim">$20 – $35</td><td class="n dim">$13 – $25 / visit</td><td class="n dim">$60 – $150+</td><td class="dim">—</td>
         </tr>
         <tr class="me">
           <td class="name">Your price</td><td>Keswick, then Sutton / Jackson's Point</td>
-          <td class="n">$25 / visit<br>$110 / mo</td><td class="n">$30 / visit<br>$130 / mo</td>
-          <td class="n">$46 / wk<br>$200 / mo</td><td class="n">$89<br>free for first 5</td><td><span class="pill no">Yes — on purpose</span></td>
+          <td class="n">≈ $27 / visit<br>$115 / mo<br><span class="dim">Standard yard</span></td><td class="n">≈ $31 / visit<br>$135 / mo</td>
+          <td class="n dim">Not offered</td><td class="n">$89 flat<br><span class="dim">credited if weekly starts in 7 days</span></td><td><span class="pill no">Yes — on purpose</span></td>
         </tr>
       </tbody>
     </table>
@@ -317,23 +348,27 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   <div class="reads">
     <div class="read">
       <h4>Most of this market won't tell you a price</h4>
-      <p>Three of seven make you fill in a form and wait; a fourth publishes only a $78–$350+ range. Publishing a plain, specific price card is by itself a competitive advantage in York Region — and it costs nothing.</p>
+      <p>Four of nine make you fill in a form, phone, or message a Facebook page; a fifth publishes only a $78–$350+ range. Publishing a plain, specific price card is by itself a competitive advantage in York Region — and it costs nothing.</p>
     </div>
     <div class="read">
-      <h4>Nobody is based in Georgina</h4>
-      <p>Every operator runs out of Newmarket, Aurora or Richmond Hill. Keswick is the tail end of somebody else's route. "I live three streets over" is the entire pitch, and it can't be copied.</p>
+      <h4>No dedicated service is based in Georgina</h4>
+      <p>Every dedicated operator runs out of Newmarket, Aurora or Richmond Hill, and Woof Waste Warriors doesn't even list Keswick. Locally there's Hiking Tails, scooping at $30 a visit as a side line to walking and boarding, and a Keswick Poop Removal Facebook page with no prices. "I live three streets over, and this is all we do" is the pitch, and it can't be copied.</p>
     </div>
     <div class="read">
       <h4>Don't chase the low end</h4>
-      <p>Woof Waste Warriors' twice-weekly plan works out to $13.85 a visit; Poochy Poo's entry tier is about $18. Both are below the cost of your time once you count driving. Let them have those customers; price at $25 and win on being local and reliable.</p>
+      <p>Woof Waste Warriors' twice-weekly plan works out to $13.85 a visit; Poochy Poo's entry tier is about $18. Both are below the cost of your time once you count driving. Let them have those customers; price at $115 a month (about $27 a visit) and win on being local, flat-priced and reliable.</p>
     </div>
     <div class="read">
-      <h4>The free first clean is your cheapest weapon</h4>
-      <p>Poop Patrol charges $75 minimum for a 15-minute initial clean; Poochy Poo starts at $88 and others charge $95–$150. Giving it away costs you 30 minutes and lands in the customer's head as a $100 gift.</p>
+      <h4>The credited cleanup is your cheapest weapon</h4>
+      <p>Poop Patrol bills the first clean by the minute; others charge $100–$145 for a one-time cleanup. You charge a flat $89 up front and give all of it back to anyone who starts weekly within 7 days. The customer who converts got it free; the one who doesn't paid about $120 an hour for a 45-minute job. Either way the money arrives before the hardest visit, and a credited cleanup costs about $17 in wages to win a customer.</p>
     </div>
     <div class="read">
       <h4>A 4.5× spread on one plan proves the tiering</h4>
-      <p>Poochy Poo's weekly plan runs $78 to $350+ for the same service — the whole difference is yard size and dog count. That's the market telling you flat pricing is wrong. Tier by square footage from day one and you'll never have to renegotiate a big-yard customer.</p>
+      <p>Poochy Poo's weekly plan runs $78 to $350+ for the same service — the whole difference is yard size and dog count. That's the market telling you flat pricing is wrong. Tier by yard type from day one (Compact, Standard, Large, Estate quoted) and you'll never have to renegotiate a big-yard customer.</p>
+    </div>
+    <div class="read">
+      <h4>Every other week is priced to sell weekly</h4>
+      <p>A Standard yard is $89 every other week or $115 weekly: $26 more for twice the visits, so weekly sells itself. Every other week lives in the Terms of Service but never in the ads, and the Monthly Reset is quote only.</p>
     </div>
     <div class="read">
       <h4>Steal the photo and the gate</h4>
@@ -344,71 +379,118 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
 <section>
   <span class="lbl">04 — Your price card</span>
   <div class="prose">
-    <h2>One rule you can quote from memory</h2>
-    <div class="note">
-      <p class="mono" style="font-size:1.05rem; margin-bottom:.5em;"><strong>$20 + $5 per dog + yard adjustment = price per visit</strong></p>
-      <p style="margin:0; font-size:.94rem;">Yard adjustment is based on the <em>area you actually walk</em>, not the lot size on the listing. Small (under 2,500 sq ft) −$3 · Standard (2,500–5,000 sq ft) $0 · Large (5,000–10,000 sq ft) +$5 · Extra large (10,000 sq ft to ½ acre) +$12 · Over ½ acre, quote it in person.</p>
-    </div>
-    <p>A typical Keswick subdivision back yard is 2,000–3,500 square feet of walkable turf, which lands almost everyone in the Standard tier. Type the square footage into the calculator below and it picks the tier for you — after a dozen quotes you'll be sizing yards by eye.</p>
+    <h2>Two questions: how many dogs, which yard</h2>
+    <p>Every price below is per month, plus HST. Yard size is the <em>area you actually walk</em>, not the lot size on the listing — a typical Keswick subdivision back yard lands in Standard. Over 5,000 sq ft, rural lots, and 3+ dogs on the cleanup get quoted in person.</p>
   </div>
-  <div class="tool">
+  <div class="tool" id="quote">
     <div class="controls">
       <div class="ctrl">
-        <label for="dogs">Dogs</label>
-        <select id="dogs"><option value="1">1 dog</option><option value="2">2 dogs</option><option value="3">3 dogs</option><option value="4">4 dogs</option><option value="5">5 dogs</option><option value="6">6 dogs</option></select>
+        <label>Yard size</label>
+        <div class="seg" role="radiogroup" aria-label="Yard size">
+          <input type="radio" name="yard" id="y0" value="0"><label for="y0">Compact<small>to 1,500 sq ft · ~40×30 ft</small></label>
+          <input type="radio" name="yard" id="y1" value="1" checked><label for="y1">Standard<small>1,501–2,500 · ~50×40 ft</small></label>
+          <input type="radio" name="yard" id="y2" value="2"><label for="y2">Large<small>2,501–5,000 · ~75×50 ft</small></label>
+          <input type="radio" name="yard" id="y3" value="3"><label for="y3">Estate or rural<small>over 5,000 sq ft</small></label>
+        </div>
       </div>
       <div class="ctrl">
-        <label for="sqft">Back yard walked · <span class="rangeval"><span id="sqftV">3,200</span> sq ft</span></label>
-        <input type="range" id="sqft" min="500" max="26000" value="3200" step="100">
-        <input type="number" id="sqftN" min="200" max="200000" step="100" value="3200" aria-label="Back yard square feet">
-        <div class="tier" id="tier">Standard yard · no adjustment</div>
+        <label>Dogs</label>
+        <div class="seg" role="radiogroup" aria-label="Dogs">
+          <input type="radio" name="dogs" id="d1" value="1"><label for="d1">1</label>
+          <input type="radio" name="dogs" id="d2" value="2" checked><label for="d2">2</label>
+          <input type="radio" name="dogs" id="d3" value="3"><label for="d3">3</label>
+          <input type="radio" name="dogs" id="d4" value="4"><label for="d4">4</label>
+        </div>
       </div>
       <div class="ctrl">
-        <label for="freq">Frequency</label>
-        <select id="freq">
-          <option value="w1" selected>Once a week</option>
-          <option value="w2">Twice a week</option>
-          <option value="w3">Three times a week</option>
-          <option value="eow">Every other week</option>
-        </select>
-      </div>
-      <div class="ctrl">
-        <label for="addons">Add-ons</label>
-        <select id="addons" multiple size="4" style="height:auto;">
-          <option value="10">We haul the waste away · +$10/mo</option>
-          <option value="35">Yard deodorize · +$35 each</option>
-          <option value="8v">Front yard too · +$8/visit</option>
-          <option value="5w">Winter (Dec 15 – Mar 15) · +$5/visit</option>
-        </select>
+        <label>Optional add-ons</label>
+        <div class="addon"><input type="checkbox" id="haul"><label for="haul">Haul-Away</label><span class="dim">$20/mo, any plan</span></div>
+        <div class="addon"><input type="checkbox" id="deo"><label for="deo">Deodorizing</label>
+          $<input type="number" id="deoPrice" value="35" min="35" step="5" aria-label="Deodorizing price per treatment"><span class="dim">per treatment · from $35, by yard size</span></div>
       </div>
     </div>
-    <div class="out">
-      <div><div class="k">Per visit</div><div class="v" id="oVisit">$25</div><div class="h" id="oVisits">4.3 visits a month</div></div>
-      <div><div class="k">Billed monthly</div><div class="v" id="oMonth">$110</div><div class="h">Prepaid by e-transfer</div></div>
-      <div><div class="k">First clean</div><div class="v" id="oFirst">$89</div><div class="h">Free for your first 5 customers</div></div>
-      <div><div class="k">Your hourly rate</div><div class="v" id="oHour">$150</div><div class="h" id="oHourH">at 10 min per stop</div></div>
-    </div>
-    <div class="formula" id="formula"></div>
-    <p class="hint"><strong>Measuring it in 20 seconds:</strong> pace the yard heel-to-toe — one adult pace ≈ 2.5 ft, so paces across × paces deep × 6 ≈ square feet. A 20 × 25 pace yard is about 3,000 sq ft. Or drop the address into Google Maps satellite view before you leave the house.</p>
+    <div class="out" id="qOut" aria-live="polite"></div>
+    <p class="hint" id="qDeo" hidden></p>
+    <div class="warnline" id="qWarn" hidden></div>
+    <p class="hint">Every new client starts with the $89 Initial Cleanup (Compact, Standard or Large, 1–2 dogs), paid when booked. Start weekly within 7 days and the $89 comes off the first month. Every other week, Monthly Reset, or no plan: the $89 stands.</p>
+    <p class="hint"><strong>Measuring it in 20 seconds:</strong> pace the yard heel-to-toe — one adult pace ≈ 2.5 ft, so paces across × paces deep × 6 ≈ square feet. A 15 × 25 pace yard is about 2,250 sq ft. Or drop the address into Google Maps satellite view before you leave the house.</p>
   </div>
   <div class="prose" style="margin-top:38px;">
     <h3>The whole price card on one screen</h3>
-    <p>Weekly service, per visit and per month. Screenshot this and keep it on your phone — it's every quote you'll give in the first year.</p>
+    <p>Screenshot this and keep it on your phone — it's every quote you'll give in the first year.</p>
   </div>
-  <div class="scroller" id="grid"></div>
+  <div class="rates">
+  <h4>Weekly</h4>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Yard</th><th class="n">1 dog</th><th class="n">2 dogs</th><th class="n">Each extra</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Compact <span class="dim">· to 1,500 sq ft</span></td><td class="n">$99</td><td class="n">$119</td><td class="n">+$20</td></tr>
+        <tr class="hi"><td class="name">Standard <span class="dim">· 1,501–2,500</span></td><td class="n">$115</td><td class="n">$135</td><td class="n">+$20</td></tr>
+        <tr><td class="name">Large <span class="dim">· 2,501–5,000</span></td><td class="n">$129</td><td class="n">$149</td><td class="n">+$20</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>Every other week <span class="pill yes tag">not advertised</span></h4>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Yard</th><th class="n">1 dog</th><th class="n">2 dogs</th><th class="n">Each extra</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Compact</td><td class="n">$79</td><td class="n">$99</td><td class="n">+$20</td></tr>
+        <tr><td class="name">Standard</td><td class="n">$89</td><td class="n">$109</td><td class="n">+$20</td></tr>
+        <tr><td class="name">Large</td><td class="n">$99</td><td class="n">$119</td><td class="n">+$20</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>Monthly Reset <span class="pill yes tag">quote only</span></h4>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Yard</th><th class="n">1 dog</th><th class="n">2 dogs</th><th class="n">Each extra</th></tr></thead>
+      <tbody>
+        <tr><td class="name">Compact</td><td class="n">$65</td><td class="n">$80</td><td class="n">+$15</td></tr>
+        <tr><td class="name">Standard</td><td class="n">$75</td><td class="n">$90</td><td class="n">+$15</td></tr>
+        <tr><td class="name">Large</td><td class="n">$85</td><td class="n">$100</td><td class="n">+$15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
   <div class="prose" style="margin-top:34px;">
-    <h3>Why the frequency multipliers are what they are</h3>
-    <p>Twice a week is <em>not</em> double the money — there's less waste per visit — but it is double the driving, so it prices at 1.85× the weekly rate, not 2×. Three times a week is 2.65×. Every-other-week costs 1.5× <em>per visit</em> because two weeks of accumulation takes half again as long. That last number is deliberate: every-other-week wrecks route density, so price it so weekly is the obvious choice.</p>
-    <h3>The winter question, since you're starting in September</h3>
-    <p>Snow doubles the time in a yard. Two workable options, both of which you should put to customers in early November:</p>
-    <p><strong>Keep going at +$5 a visit</strong>, which is honest and keeps cash flowing through the quiet months — or <strong>pause until March with a pre-booked Spring Reset at $119</strong>, which locks them in, gives you a March cash spike, and hands you a warm list to reopen instead of a cold start. Most will pick the pause. Take the deposit.</p>
+    <h3>Adding a dog, fast</h3>
+    <div class="note">
+      <p class="mono" style="font-size:1.05rem; margin-bottom:.5em;"><strong>Weekly or every other week: 1-dog price + $20 per extra dog.<br>Monthly Reset: 1-dog price + $15 per extra dog.</strong></p>
+      <p style="margin:0; font-size:.94rem;">Example: Standard yard, 3 dogs, weekly = $115 + $20 + $20 = $155/mo.</p>
+    </div>
+  </div>
+  <div class="scroller rates">
+    <table>
+      <tbody>
+        <tr><td>Initial Cleanup, 1–2 dogs (every new client)</td><td class="n">$89</td></tr>
+        <tr><td>One-time Cleanup, repeat or restart (Compact / Standard / Large)</td><td class="n">$99 / $119 / $139</td></tr>
+        <tr><td>Spring Reset after a winter pause</td><td class="n">$89</td></tr>
+        <tr><td>Haul-Away add-on</td><td class="n">+$20/mo</td></tr>
+        <tr><td>Deodorizing add-on, per treatment, by yard size</td><td class="n">from $35</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <div class="callout">
+      <span class="lbl">Rules that protect the route</span>
+      <p><strong>Quote in person:</strong> over 5,000 sq ft, rural lots, 3+ dogs on the cleanup, or a yard untouched for 3+ months. Charge more for heavy backlog, and tell the client the extra before you start.</p>
+      <p><strong>Never advertise</strong> every other week or a Monthly Reset price. The website and ads say only "monthly options available, just ask."</p>
+      <p><strong>The credit is weekly only.</strong> Only the flat $89 is credited, never a backlog charge, and the window is 7 days.</p>
+      <p><strong>Restarts pay the One-time rate.</strong> A cancel-and-restart, or more than 45 days between visits (other than a winter pause or a delay on your side), is a One-time Cleanup with no credit. Otherwise people cancel and restart to collect the credit again.</p>
+      <p><strong>Monthly Reset:</strong> first visit is always the $89 cleanup with no credit, then the Reset price from the next month. Only on streets you already service, on that zone's route day. Billed on the 20th for the next month. No client pauses; to stop, they cancel. Cap it at 10–15% of a route day. Upgrade to weekly within 60 days and the $89 gets credited (script #10).</p>
+    </div>
+    <h3>The winter policy, since you're starting in September</h3>
+    <p>Keep serving into winter for as long as yards stay reasonably accessible. When snow cover or frozen ground stops you from safely finding and removing waste, pause, give advance written notice by email, and resume once conditions allow. Paused weeks aren't billed, and any prepaid portion is credited to the next bill. Describe the condition rather than publishing thresholds like "below 0°C": those trigger on most winter days, and published numbers can be held against you.</p>
+    <p>After a pause longer than 4 weeks, the first visit back is the <strong>$89 Spring Reset</strong>, credited to the first month back for weekly clients only. Every-other-week and Monthly Reset clients pay it. Weekly stays the only plan that makes a cleanup free, and monthly clients can't pause all winter and come back to a full backlog for nothing.</p>
   </div>
 </section>
 <section>
   <span class="lbl">05 — The $5,000 model</span>
   <div class="prose">
     <h2>What it actually takes to net $5,000 a month</h2>
-    <p>Move the sliders. "Net" here means money left in the business before your personal income tax — set aside roughly 25% of it for CRA.</p>
+    <p>Move the sliders. "Net" here means money left in the business in an in-season month, before your personal income tax — set aside roughly 25% of it for CRA. With a 3–4 month unbilled winter pause, a Standard weekly customer is worth about $920–$1,035 a year, not $1,380.</p>
   </div>
   <div class="tool">
     <div class="controls">
@@ -422,11 +504,15 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
       </div>
       <div class="ctrl">
         <label for="mode">Who runs the route</label>
-        <select id="mode"><option value="solo" selected>Just her</option><option value="hire">One hire at $22/hr</option><option value="split">Split — she does 12, hire does the rest</option></select>
+        <select id="mode"><option value="solo" selected>Just her</option><option value="hire">One hire</option><option value="split">Split — she does 12, hire does the rest</option></select>
       </div>
       <div class="ctrl">
         <label for="stop">Minutes per stop (yard + drive) · <span class="rangeval" id="stopV">12</span></label>
         <input type="range" id="stop" min="8" max="20" value="12" step="1">
+      </div>
+      <div class="ctrl">
+        <label for="wage">Scooper wage · <span class="rangeval" id="wageV">$22.00</span>/hr</label>
+        <input type="range" id="wage" min="22" max="25" value="22" step="0.5">
       </div>
     </div>
     <div class="out">
@@ -434,6 +520,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
       <div><div class="k">Costs / month</div><div class="v" id="mCost">$843</div><div class="h" id="mCostH"></div></div>
       <div><div class="k">Net / month</div><div class="v" id="mNet">$5,137</div><div class="h" id="mNetH"></div></div>
       <div><div class="k">Her hours / week</div><div class="v warn" id="mHrs">12.0</div><div class="h" id="mHrsH"></div></div>
+      <div><div class="k">Revenue / paid labour hr</div><div class="v" id="mRph">—</div><div class="h" id="mRphH"></div></div>
     </div>
     <div class="formula" id="mFormula"></div>
   </div>
@@ -447,13 +534,15 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
         <tr><td class="name">Validation route</td><td class="n">9</td><td class="n">$1,035</td><td class="n">$754</td><td class="n">2.3</td><td>Fits the constraint. Start here.</td></tr>
         <tr><td class="name">Ceiling of one person</td><td class="n">28</td><td class="n">$3,220</td><td class="n">$2,693</td><td class="n">6.4</td><td>Husband takes one Saturday morning a month.</td></tr>
         <tr><td class="name">Solo maximum</td><td class="n">52</td><td class="n">$5,980</td><td class="n">$5,137</td><td class="n">12.0</td><td>Hits $5,000 but eats a part-time job's worth of hours.</td></tr>
-        <tr class="me"><td class="name">One hire</td><td class="n">67</td><td class="n">$7,705</td><td class="n">$5,054</td><td class="n">4.5</td><td>The version that's actually compatible with two small kids.</td></tr>
+        <tr class="me"><td class="name">One hire at $22/hr</td><td class="n">67</td><td class="n">$7,705</td><td class="n">$5,054</td><td class="n">4.5</td><td>The version that's actually compatible with two small kids.</td></tr>
+        <tr><td class="name">One hire at $25/hr</td><td class="n">70</td><td class="n">$8,050</td><td class="n">$5,058</td><td class="n">4.6</td><td>Three more customers buys a wage that beats driving for Uber.</td></tr>
       </tbody>
     </table>
   </div>
   <div class="prose">
     <div class="callout">
       <span class="lbl">The number to watch is minutes per stop</span>
+      <p><strong>The hiring rule:</strong> never let revenue per paid labour hour fall below $100. If it does, the route has spread out; fix it with density or a price increase, not a cheaper hire. $22–$25/hour is what it takes to win someone with a car who could be driving for Uber instead. Raise prices 3–5% for new customers every spring, and let existing customers keep their rate for 12 months.</p>
       <p>At 12 minutes a stop the model works. At 18 minutes — big yards, long driveways, a route spread across Keswick and Pefferlaw — the same 52 customers take 17 hours and the whole thing collapses. <strong>Route density is the business.</strong> This is why every flyer you drop should go on a street where you already have a customer.</p>
     </div>
   </div>
@@ -462,7 +551,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   <span class="lbl">06 — The plan <span class="tick" id="progress"></span></span>
   <div class="prose">
     <h2>Twelve weeks, two hours each</h2>
-    <p>Do these in order. Don't skip ahead to branding, a website, or a logo — none of your first five customers will care, and all three can be bought in an afternoon once money is coming in.</p>
+    <p>Do these in order. The name, website, price card and ads are already done, so don't spend any more of the two hours polishing them. None of your first five customers will care.</p>
   </div>
   <div class="weeks" id="weeks"></div>
 </section>
@@ -485,13 +574,13 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
       <div class="when">End of week 2</div>
       <h4>Interest</h4>
       <p class="pass">≥ 10 genuine inquiries from ~60 targeted doors + 3 group posts.</p>
-      <p class="fail"><b>If not</b> — the offer is wrong, not the market. Lead with the free first clean in the headline and re-post.</p>
+      <p class="fail"><b>If not</b> — the offer is wrong, not the market. Lead with "initial cleanup free when you go weekly" in the headline and re-post.</p>
     </div>
     <div class="gate">
       <div class="when">End of week 4</div>
       <h4>Price</h4>
-      <p class="pass">≥ 5 paying customers at the full $110/month.</p>
-      <p class="fail"><b>If they only bite at $79</b> — Keswick's willingness to pay is below model. Re-run the $5,000 math before hiring anyone.</p>
+      <p class="pass">≥ 5 paying weekly customers at full price ($115 Standard).</p>
+      <p class="fail"><b>If they only bite at monthly</b> — Keswick's willingness to pay is below model. Re-run the $5,000 math before hiring anyone.</p>
     </div>
     <div class="gate">
       <div class="when">End of week 8</div>
@@ -520,7 +609,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     </div>
     <div>
       <h4>HST — register voluntarily on day one</h4>
-      <p>You're a small supplier until $30,000 a year, which you'd cross at about 22 customers. Registering later means raising every customer's price 13% mid-relationship. Register now, quote "+ HST" from the first flyer, and claim the tax back on gas, bags and gear.</p>
+      <p>You're a small supplier until $30,000 a year, which you'd cross at about 22 year-round weekly customers, or about 30 with a winter pause. Registering later means raising every customer's price 13% mid-relationship. Register now, quote "+ HST" from the first flyer, and claim the tax back on gas, bags and gear.</p>
     </div>
     <div>
       <h4>Georgina home-based business</h4>
@@ -528,21 +617,25 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     </div>
     <div>
       <h4>Where the waste goes</h4>
-      <p>Default: double-bagged into the customer's own bin — it's their household waste and it's free. Then sell "we take it away" at $10/month as an upsell, exactly as Woof Waste Warriors does. Do not put commercial route waste into your own curbside bin.</p>
+      <p>Default: double-bagged into the customer's own bin — it's their household waste and it's free. Haul-Away is a $20/month add-on on any plan, on request. Do not put commercial route waste into your own curbside bin.</p>
     </div>
     <div>
       <h4>Boot and tool disinfection</h4>
       <p>Parvo and giardia travel on a scoop between yards. A spray bottle of dilute bleach and 20 seconds between stops. Then <em>say so on the flyer</em> — none of your competitors mention it and every dog owner who's had a sick puppy will read it twice.</p>
     </div>
     <div>
+      <h4>Terms of Service, public</h4>
+      <p>Every other week, the 45-day restart rule, the backlog charge and the winter pause live in the Terms, not the ads. Publish it as a page and link it in the footer next to the Privacy Policy.</p>
+    </div>
+    <div>
       <h4>Money hygiene</h4>
-      <p>Separate chequing account or, at minimum, a dedicated e-transfer email from week one. Bill monthly in advance by e-transfer — it costs nothing, versus about 2.9% on cards, and it eliminates chasing payment entirely.</p>
+      <p>Separate chequing account or, at minimum, a dedicated e-transfer email from week one. Bill monthly in advance by e-transfer — it costs nothing, versus about 2.9% on cards, and it eliminates chasing payment entirely. The $89 initial cleanup is paid when booked; Monthly Resets bill on the 20th for the next month, due in 5 days.</p>
     </div>
   </div>
 </section>
 <footer>
   <div class="prose">
-    <p><strong>A note on the numbers.</strong> Competitor prices were read from their public pricing pages in August 2026 and normalized to weekly service; three of the seven publish no prices at all, and Poochy Poo publishes only a range (read from their pricing page directly, since the site blocks automated access). Dwelling counts are 2016 census figures for Keswick with growth estimated forward; dog-ownership and penetration rates are industry ranges, not Georgina-specific measurements. Treat the market ceiling as an order of magnitude, and replace it with your own door-knock data by week 4.</p>
+    <p><strong>A note on the numbers.</strong> Pricing follows the Turf &amp; Tail Pricing Strategy and Ad Creative Review (updated October 2026). Competitor prices were read from public sources in August and September 2026 and normalized to weekly service; four of the nine publish no prices at all, and Poochy Poo publishes only a range (read from their pricing page directly, since the site blocks automated access). Dwelling counts are 2016 census figures for Keswick with growth estimated forward; dog-ownership and penetration rates are industry ranges, not Georgina-specific measurements. Treat the market ceiling as an order of magnitude, and replace it with your own door-knock data by week 4.</p>
     <p>Sources:</p>
     <ul>
       <li><a href="https://www.poop-patrol.com/poop-pick-up-cost/">Poop Patrol — pick-up cost</a> · <a href="https://www.poop-patrol.com/locations/">service areas</a></li>
@@ -562,113 +655,39 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   "use strict";
   var $ = function(id){ return document.getElementById(id); };
   var money = function(n){ return "$" + Math.round(n).toLocaleString("en-CA"); };
-  /* ---------------- price calculator ---------------- */
-  var FREQ = {
-    w1:  {perVisitMult:1.00, visitsMo:4.33, label:"4.3 visits a month", wk:"1×"},
-    w2:  {perVisitMult:0.925, visitsMo:8.67, label:"8.7 visits a month", wk:"2×"},
-    w3:  {perVisitMult:0.883, visitsMo:13.0, label:"13 visits a month", wk:"3×"},
-    eow: {perVisitMult:1.50, visitsMo:2.17, label:"2.2 visits a month", wk:"every other week"}
-  };
-  var TIERS = [
-    {max:2499,  adder:-3, name:"Small yard",        note:"under 2,500 sq ft · −$3",          first:89},
-    {max:5000,  adder:0,  name:"Standard yard",     note:"2,500–5,000 sq ft · no adjustment", first:89},
-    {max:10000, adder:5,  name:"Large yard",        note:"5,000–10,000 sq ft · +$5",          first:119},
-    {max:21780, adder:12, name:"Extra large yard",  note:"10,000 sq ft – ½ acre · +$12",      first:149}
-  ];
-  function tierFor(sq){
-    for(var i=0;i<TIERS.length;i++){
-      if(sq <= TIERS[i].max) return TIERS[i];
-    }
-    var quarters = Math.ceil((sq - 21780) / 10890);   // extra quarter-acres
-    return {
-      adder: 12 + quarters*8,
-      name: "Over half an acre",
-      note: "quote in person · +$" + (12 + quarters*8) + " suggested floor",
-      first: 149 + quarters*30,
-      big: true
-    };
-  }
-    function perVisitFor(dogs, adder){ return 20 + 5*dogs + adder; }
-  function calcPrice(){
-    var dogs = +$("dogs").value;
-    var sq = Math.max(200, +$("sqftN").value || 0);
-    var t = tierFor(sq);
-    var yard = t.adder;
-    var f = FREQ[$("freq").value];
-    var base = perVisitFor(dogs, yard);
-    $("sqftV").textContent = sq.toLocaleString("en-CA");
-    var tEl = $("tier");
-    tEl.textContent = t.name + " · " + t.note;
-    tEl.className = "tier" + (t.big ? " big" : "");
-    var perVisit = base * f.perVisitMult;
-    var addMonthly = 0, addPerVisit = 0, names = [];
-    var opts = $("addons").options;
-    for (var i=0;i<opts.length;i++){
-      if(!opts[i].selected) continue;
-      var v = opts[i].value;
-      if(v === "10"){ addMonthly += 10; names.push("haul-away $10/mo"); }
-      else if(v === "35"){ addMonthly += 35; names.push("deodorize $35"); }
-      else if(v === "8v"){ addPerVisit += 8; names.push("front yard +$8/visit"); }
-      else if(v === "5w"){ addPerVisit += 5; names.push("winter +$5/visit"); }
-    }
-    var visitTotal = perVisit + addPerVisit;
-    var monthly = visitTotal * f.visitsMo + addMonthly;
-    var monthlyRounded = Math.round(monthly/5)*5;
-    var first = t.first;
-    // her effective hourly at 10 min/stop
-    var hourly = visitTotal * 6;
-    $("oVisit").textContent = "$" + visitTotal.toFixed(2).replace(/\.00$/,"");
-    $("oVisits").textContent = f.label;
-    $("oMonth").textContent = money(monthlyRounded);
-    $("oFirst").textContent = money(first);
-    $("oHour").textContent = money(hourly);
-    $("oHourH").textContent = "at 10 min per stop, before costs";
-    var line = "($20 base + $" + (5*dogs) + " dogs " + (yard<0?"− $"+Math.abs(yard):"+ $"+yard) + " yard @ " + sq.toLocaleString("en-CA") + " sq ft) × " + f.perVisitMult.toFixed(3) + " " + f.wk;
-    if(addPerVisit) line += " + $" + addPerVisit + " per-visit add-ons";
-    line += "  =  $" + visitTotal.toFixed(2) + " per visit × " + f.visitsMo + " visits";
-    if(addMonthly) line += " + $" + addMonthly + " monthly add-ons";
-    line += "  =  " + money(monthly) + " → quote " + money(monthlyRounded) + " + HST";
-    $("formula").textContent = line;
-  }
-  ["dogs","freq","addons"].forEach(function(id){
-    $(id).addEventListener("change", calcPrice);
-  });
-  $("sqft").addEventListener("input", function(){
-    $("sqftN").value = $("sqft").value;
-    calcPrice();
-  });
-  $("sqftN").addEventListener("input", function(){
-    var v = +$("sqftN").value || 0;
-    $("sqft").value = Math.min(26000, Math.max(500, v));
-    calcPrice();
-  });
-  calcPrice();
-  /* ---------------- printable price grid ---------------- */
-  (function(){
-    var rows = "";
-    TIERS.forEach(function(t, i){
-      var label = ["Small · under 2,500 sq ft",
-                   "Standard · 2,500–5,000 sq ft",
-                   "Large · 5,000–10,000 sq ft",
-                   "Extra large · 10,000 sq ft – ½ acre"][i];
-      rows += '<tr' + (i === 1 ? ' class="hi"' : '') + '><td class="name">' + label
-            + (i === 1 ? '<br><span class="dim" style="font-weight:400">most Keswick yards</span>' : '') + '</td>';
-      for (var d = 1; d <= 4; d++){
-        var pv = perVisitFor(d, t.adder);
-        var mo = Math.round(pv * 4.33 / 5) * 5;
-        rows += '<td class="n">$' + pv + ' <span class="dim">/ visit</span><br><strong>$' + mo + ' / mo</strong></td>';
-      }
-      rows += '<td class="n">$' + t.first + '</td></tr>';
+  /* ---------------- quick quote ---------------- */
+  var P = {w:[99,115,129], e:[79,89,99], m:[65,75,85]};   // 1-dog price by yard: compact, standard, large
+  var X = {w:20, e:20, m:15};                            // each extra dog
+  var NAMES = {w:["Weekly · most popular","about 4.3 visits a month · $89 cleanup credited if started within 7 days"], e:["Every other week","about 2.2 visits a month · not advertised"], m:["Monthly Reset","1 visit a month · quote only"]};
+  var quoteEl = $("quote");
+  function picked(n){ var r = quoteEl.querySelector('input[name="'+n+'"]:checked'); return r ? +r.value : 0; }
+  function calcQuote(){
+    var y = picked("yard"), d = picked("dogs");
+    var add = $("haul").checked ? 20 : 0;
+    var out = $("qOut"); out.textContent = "";
+    ["w","e","m"].forEach(function(k){
+      var cell = document.createElement("div");
+      if(k === "w") cell.className = "best";
+      var kEl = document.createElement("div"); kEl.className = "k"; kEl.textContent = NAMES[k][0];
+      var vEl = document.createElement("div"); vEl.className = "v"; vEl.textContent = y === 3 ? "Quote" : money(P[k][y] + (d-1)*X[k] + add);
+      var hEl = document.createElement("div"); hEl.className = "h"; hEl.textContent = "/mo + HST · " + NAMES[k][1];
+      cell.appendChild(kEl); cell.appendChild(vEl); cell.appendChild(hEl); out.appendChild(cell);
     });
-    rows += '<tr><td class="name">Over ½ acre</td><td class="n dim" colspan="4">Quote in person — add $8 per visit for every extra quarter-acre</td><td class="n dim">$179+</td></tr>';
-    $("grid").innerHTML =
-      '<table><thead><tr><th>Back yard walked</th><th class="n">1 dog</th><th class="n">2 dogs</th>' +
-      '<th class="n">3 dogs</th><th class="n">4 dogs</th><th class="n">First clean</th></tr></thead><tbody>' +
-      rows + '</tbody></table>';
-  })();
+    var deo = $("qDeo");
+    if($("deo").checked && y !== 3){ deo.hidden = false; deo.textContent = "Plus deodorizing: " + money(Math.max(35, +$("deoPrice").value || 0)) + " + HST per treatment, billed when it's done (not in the monthly price)."; }
+    else if($("deo").checked){ deo.hidden = false; deo.textContent = "Deodorizing on an Estate or rural lot: quote it with the yard."; }
+    else { deo.hidden = true; }
+    var w = $("qWarn");
+    if(y === 3){ w.hidden = false; w.textContent = "Estate or rural lot: quote the plan and the cleanup in person."; }
+    else if(d >= 3){ w.hidden = false; w.textContent = "3+ dogs: the monthly math above applies, but quote the cleanup in person."; }
+    else { w.hidden = true; }
+  }
+  quoteEl.addEventListener("input", calcQuote);
+  quoteEl.addEventListener("change", calcQuote);
+  calcQuote();
   /* ---------------- profit model ---------------- */
   var VAR_PER_CUST = 9;      // bags, fuel share, disposal, processing
-  var WAGE = 22 * 1.14;      // + CPP/EI/WSIB/vacation
+  var LOADING = 1.14;        // + CPP/EI/WSIB/vacation
   function adminHrs(c, mode){
     // sales, invoicing, texts — grows with the book; + 2.5 hrs managing someone
     return (mode === "solo" ? 0 : 2.5) + Math.max(0.5, c * 0.03);
@@ -683,6 +702,8 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     var tick = +$("tick").value;
     var mode = $("mode").value;
     var stop = +$("stop").value;
+    var WAGE = +$("wage").value * LOADING;
+    $("wageV").textContent = "$" + (+$("wage").value).toFixed(2);
     $("custV").textContent = c;
     $("tickV").textContent = "$" + tick;
     $("stopV").textContent = stop;
@@ -708,6 +729,17 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     $("mNetH").textContent = net >= 5000
       ? "target cleared by " + money(net - 5000)
       : money(5000 - net) + " short of $5,000";
+    var paidHrsMo = hireHrsWk * 4.33;
+    if(paidHrsMo > 0){
+      var rph = hireStops * tick / paidHrsMo;
+      $("mRph").textContent = money(rph);
+      $("mRph").className = "v" + (rph < 100 ? " warn" : "");
+      $("mRphH").textContent = rph >= 100 ? "above the $100 hiring floor" : "below the $100 floor: fix density or price";
+    } else {
+      $("mRph").textContent = "—";
+      $("mRph").className = "v";
+      $("mRphH").textContent = "no paid labour yet";
+    }
     $("mHrs").textContent = herHrsWk.toFixed(1);
     var hv = $("mHrs");
     hv.className = "v" + (herHrsWk > 2.5 ? " warn" : "");
@@ -721,7 +753,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
     f += "  Net is pre-personal-tax; set aside ~25% for CRA.";
     $("mFormula").textContent = f;
   }
-  ["cust","tick","mode","stop"].forEach(function(id){
+  ["cust","tick","mode","stop","wage"].forEach(function(id){
     $(id).addEventListener("input", calcModel);
     $(id).addEventListener("change", calcModel);
   });
@@ -730,25 +762,25 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   var PLAN = [
     { w:"1", tag:"Sept", h:"Be findable and buyable", goal:"Goal: a stranger can find you, price you, and pay you — by Sunday night.",
       steps:[
-        ["15","Pick a name that says the town and the job out loud. <em>Keswick Scoop Co.</em> is fine. Check the Facebook handle is free. Do not design a logo."],
+        ["15","Check that turfandtail.ca, the Facebook page and the Google Business Profile all show the same prices as the quote card. Replace the Facebook share image, which still shows another company's name on the bins."],
         ["20","Create a <strong>Google Business Profile</strong> as a service-area business so your home address stays hidden. Do this first — verification takes 1–2 weeks and it's the single biggest source of free local leads."],
         ["15","Facebook business page (cover photo = a real before/after of your own yard) plus a Facebook Marketplace listing under Services. Marketplace is free, evergreen, and generates DMs while you sleep."],
-        ["15","Write the price card into your Notes app. One screen. Nothing printed yet."],
+        ["15","Screenshot the quick quote and price card in section 04 onto your phone. Two questions, one number. If someone is unsure of their yard, pull the address up on satellite view while you're on the phone."],
         ["20","Buy the kit: metal rake + pan scooper, heavy-duty bags, nitrile gloves, spray bottle of dilute bleach, boot brush, a lidded tote for the trunk. Budget $150."],
         ["10","Open a dedicated e-transfer email address. Never mix this money with household money."],
         ["25","Text five dog-owning people you already know. Use script #1. This is where your first customer almost certainly comes from."]
       ]},
     { w:"2", tag:"Sept", h:"60 doors and three group posts", goal:"Goal: 10+ genuine inquiries. Volume of the right doors, not any doors.",
       steps:[
-        ["20","Print 120 half-page flyers — home printer or Staples in Newmarket, about $18. Script #3 is the copy."],
+        ["20","Print 120 of the neighbour flyer (TurfTail_Ad_Option_3_Neighbour_Flyer_v4) — home printer or Staples in Newmarket, about $18. Don't use the old Weekly_Backyard_Share files; they still show the 4,000 sq ft limit. Script #3 is the text version."],
         ["60","Walk 60 <strong>targeted</strong> doors in your own subdivision. Only houses showing a dog signal: a bowl on the porch, a Beware of Dog sign, a fenced yard, a doghouse, a chewed ball on the lawn. Forty targeted doors beat four hundred random ones."],
         ["20","Post script #2 in three Georgina/Keswick community Facebook groups. Post as a neighbour, not as an ad — most groups delete ads and some ban the poster."],
-        ["20","Reply to every message the same day. Book the free first cleans for next weekend."]
+        ["20","Reply to every message the same day. Book the $89 initial cleanups for next weekend, paid at booking by card or e-transfer. No payment, no cleanup."]
       ]},
-    { w:"3", tag:"Sept", h:"Do the free first cleans", goal:"Goal: 3–5 yards done, photographed, and reviewed.",
+    { w:"3", tag:"Sept", h:"Do the initial cleanups", goal:"Goal: 3–5 yards done, photographed, reviewed, and converted to weekly.",
       steps:[
-        ["90","Free first clean for your first five. A neglected yard runs 20–40 minutes — this is the slowest work you'll ever do here, and it's deliberate."],
-        ["15","Before and after photo of every yard, same angle. These photos are your marketing for the next six months."],
+        ["90","The $89 initial cleanup, already paid. A neglected yard runs 20–45 minutes — this is the slowest work you'll ever do here, and it's deliberate. Heavy backlog or 3+ dogs: tell them the extra before you start."],
+        ["15","Before and after photo of every yard, same angle. Text them from the yard with script #8: start weekly within 7 days and the $89 comes off the first month. These photos are also your marketing for the next six months."],
         ["15","Text each customer the same evening asking for a Google review, with the direct link. Ask on the day it happened or you won't get it. Script #6."]
       ]},
     { w:"4", tag:"Oct", h:"First paid route, plus 60 more doors", goal:"Goal: five paying customers and a route that takes under an hour.",
@@ -756,7 +788,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
         ["45","Run the weekly route. Time every stop on your phone. That number decides whether the $5,000 model is real."],
         ["50","60 more doors — <strong>only on streets adjacent to a customer you already have</strong>. Density is the whole business."],
         ["15","Post the before/after photos back into the Facebook groups with a plain caption. Proof beats persuasion."],
-        ["10","<strong>Gate check:</strong> five paying at $110, or figure out which of the two is wrong — the offer or the price."]
+        ["10","<strong>Gate check:</strong> five paying weekly at $115, or figure out which of the two is wrong — the offer or the price."]
       ]},
     { w:"5–8", tag:"Oct–Nov", h:"Repeat, compound, ask", goal:"Goal: 10–12 customers. The 2-hour ceiling.",
       steps:[
@@ -764,12 +796,12 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
         ["45","60 doors a week on adjacent streets. Keep a marked-up paper map of what you've covered."],
         ["15","Ask every customer once for one referral: $20 off next month for both of you. Script #7."],
         ["15","Drop referral cards at Pet Valu Keswick, the local vet clinics, the groomers, and Hiking Tails Pet Services. Offer 20% of a referred customer's first month."],
-        ["—","Early November: put the winter question to every customer — carry on at +$5 a visit, or pause with a pre-booked $119 Spring Reset. Take the deposit either way."]
+        ["—","Early November: email every customer the winter policy. You keep going while yards are accessible, pause with written notice when snow or frozen ground stops you, paused weeks aren't billed, and the first visit back is the $89 Spring Reset (credited for weekly)."]
       ]},
     { w:"9–12", tag:"Nov–Dec", h:"Decide who runs the route", goal:"Goal: an answer, not more customers.",
       steps:[
         ["30","Read your own numbers: customers, cancellations, average stop time, revenue per hour. Run them through the model above."],
-        ["30","Pick one: your husband takes Saturday 8–10 (free, caps out around 28 customers), or you hire a scooper at $22/hour (costs money, unlocks 67)."],
+        ["30","Pick one: your husband takes Saturday 8–10 (free, caps out around 28 customers), or you hire a scooper at $22–$25/hour (costs money, unlocks 67–70). They'll likely need their own car, so the wage has to beat driving for Uber. Revenue per paid labour hour has to stay at $100 or more."],
         ["30","If hiring: post in the same Facebook groups. You want a reliable local teenager or a retiree with a truck, not a career hire. Trial them on your own route for two Saturdays before handing over keys and gate codes."],
         ["30","Plan route day two — Sutton and Jackson's Point — for a March opening, timed to the spring rush, which is the single biggest selling window of the year."]
       ]}
@@ -816,19 +848,25 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   /* ---------------- scripts ---------------- */
   var SCRIPTS = [
     ["1 · Text to five people you already know",
-"Hey! Random one — I'm starting a little dog poop pickup service here in Keswick. Weekly, I take everything away, $110 a month.\n\nTwo questions: would you want it? And if not, do you know anyone with a dog and a back yard who might? I'm looking for my first five customers and the first cleanup is free.\n\nNo pressure at all — a name would help me just as much as a yes."],
+"Hey! Random one — I've started Turf & Tail, a weekly dog waste removal service here in Keswick. $115 a month for one dog and a standard back yard.\n\nTwo questions: would you want it? And if not, do you know anyone with a dog and a back yard who might? I'm looking for my first five customers. The first visit is an $89 initial cleanup, and if you start weekly within 7 days it comes off your first month, so it's free.\n\nNo pressure at all — a name would help me just as much as a yes."],
     ["2 · Facebook community group post",
-"Hi neighbours 👋 I'm a mum here in Keswick and I've just started a small dog waste pickup service — the unglamorous job nobody wants to do on a Saturday.\n\nWeekly pickup, I bag it and take it away, I send you a photo of the finished yard and confirm your gate is latched, and I disinfect my boots and tools between every yard (parvo travels, and nobody around here seems to mention that).\n\n$110/month + HST for one dog and a normal-sized back yard. Two dogs $130. Bigger yard, we'll sort it out.\n\nI'm looking for my first 5 local customers and I'll do the first big cleanup free — that's usually a $89–$150 job. All I ask is an honest review after a few weeks.\n\nI live right here in Keswick, so I'm not driving up from Newmarket and fitting you in at the end of a route. Message me if you want your yard back."],
-    ["3 · Half-page flyer copy",
-"YOUR DOG'S MESS. GONE. EVERY WEEK.\n\nI'm [name] — I live on [street], three minutes from your door.\n\n· Weekly pickup, all waste taken away\n· $110/month + HST · one dog, standard yard\n· Photo of the finished yard + gate confirmation, every visit\n· Boots and tools disinfected between every yard\n· No contract. Cancel any time.\n\nFIRST CLEANUP FREE for my first 5 Keswick customers (normally $89).\n\nText or call: [number]\nSee before-and-afters: [Facebook page]\n\nLocal. Not a franchise. Not driving up from Newmarket."],
+"Hi neighbours 👋 I'm a mum here in Keswick and I've just started Turf & Tail, a small dog waste removal service — the unglamorous job nobody wants to do on a Saturday.\n\nSame day every week. I send you a photo of the finished yard and confirm your gate is latched, and I disinfect my boots and tools between every yard (parvo travels, and nobody around here seems to mention that). Waste goes double-bagged into your bin, or I haul it away for $20/month.\n\n$115/month + HST for one dog and a standard back yard (up to 2,500 sq ft). Compact yards $99, large $129, +$20 for each extra dog. Monthly options are available too, just ask.\n\nThe first visit is an $89 initial cleanup to clear the backlog. Start weekly within 7 days and the whole $89 comes off your first month. I'm looking for my first 5 local customers, and all I ask is an honest review after a few weeks.\n\nI live right here in Keswick, so I'm not driving up from Newmarket and fitting you in at the end of a route. Message me or see the prices at turfandtail.ca if you want your yard back."],
+    ["3 · Neighbour flyer, text version",
+"YOUR DOG'S MESS. GONE. EVERY WEEK.\n\nTurf & Tail · weekly dog waste removal · Keswick\nI'm [name] — I live on [street], three minutes from your door.\n\n· Same day every week\n· Compact $99 · Standard $115 · Large $129 per month + HST, one dog\n· +$20/month for each extra dog\n· Photo of the finished yard + gate confirmation, every visit\n· Boots and tools disinfected between every yard\n· No contract. Skip any week.\n\nINITIAL CLEANUP $89 — FREE WHEN YOU GO WEEKLY WITHIN 7 DAYS.\nMonthly Reset also available, just ask.\n\nNot sure? Call and we'll check your yard on a satellite map.\nText or call: [number]\nPrices and before-and-afters: turfandtail.ca\n\nLocal. Not a franchise. Not driving up from Newmarket."],
     ["4 · If someone opens the door (20 seconds)",
-"\"Hi — sorry to bother you. I'm [name], I live over on [street]. I've just started doing weekly dog poop pickup here in Keswick and I'm knocking on the doors that look like they've got a dog.\n\nIt's $110 a month, I come the same day every week, and I take everything away with me. I'm doing the first big cleanup free for my first few customers.\n\nHere's a flyer — no pressure at all. Have a good one.\"\n\n(Then leave. Do not pitch twice. The flyer does the second half.)"],
+"\"Hi — sorry to bother you. I'm [name], I live over on [street]. I run Turf & Tail, weekly dog waste removal here in Keswick, and I'm knocking on the doors that look like they've got a dog.\n\nIt's $115 a month for a standard yard, same day every week. The first visit is an $89 initial cleanup, and if you start weekly within the week it comes off your first month.\n\nHere's a flyer — no pressure at all. Have a good one.\"\n\n(Then leave. Do not pitch twice. The flyer does the second half.)"],
     ["5 · When they say it's too expensive",
-"\"Totally fair — it works out to about $25 a week. Most people think about it as: is a Saturday morning in the yard worth $25 to you?\n\nIf weekly's too much, I do every-other-week at $38 a visit. It's a bit more per visit because there's twice as much to pick up.\n\nAnd honestly, if it's not for you right now, that's fine — could I leave a card in case it changes over the winter?\"\n\n(Never discount the monthly price. Give away the first cleanup instead — it costs you 30 minutes and it's worth $89 to them.)"],
+"\"Totally fair — for a standard yard it works out to about $27 a visit. Most people think about it as: is a Saturday morning in the yard worth $27 to you?\n\nIf weekly's more than you need, we also do a Monthly Reset. I can quote your yard for that.\n\nAnd honestly, if it's not for you right now, that's fine — could I leave a card in case it changes in the spring?\"\n\n(Never discount the weekly price, and never offer every other week. It's in the Terms, not the pitch. The $89 credit is the discount.)"],
     ["6 · Review request, sent the same evening",
 "Hi [name]! Thanks so much for letting me sort the yard out today — it looked rough and now it doesn't 😄\n\nWould you mind leaving a quick Google review? I'm brand new and honestly the first handful of reviews decide whether this works or not. Takes about 30 seconds: [link]\n\nSee you [day] for the first weekly run."],
     ["7 · The referral ask (once, around week 4)",
-"Quick ask — do you know one other person in Keswick with a dog and a back yard?\n\nIf you send them my way and they sign up, I'll take $20 off your next month and $20 off their first one. That's it, no catch. Word of mouth is basically my whole marketing budget."]
+"Quick ask — do you know one other person in Keswick with a dog and a back yard?\n\nIf you send them my way and they sign up, I'll take $20 off your next month and $20 off their first one. That's it, no catch. Word of mouth is basically my whole marketing budget."],
+    ["8 · Conversion text, sent with the before-and-afters",
+"All done, here are your before and afters. We run your street every [day]. If you start weekly this week, today's $89 comes off your first month, so the cleanup is free. No contract, and you can skip any week. Want me to put you down?"],
+    ["9 · When someone asks for monthly",
+"We do offer a Monthly Reset for [$75]. Just so you know, weekly is [$115], which is four visits instead of one, so it works out to about $27 a visit instead of $75, and the $89 cleanup is free when you start weekly. Which works better for you?"],
+    ["10 · Monthly Reset upgrade, after the 2nd or 3rd visit",
+"Here's today's before and after. For about $40 more a month, weekly keeps it from ever getting like this, and because you're within your first 60 days we'll credit your $89 cleanup back. Want to switch?"]
   ];
   var sEl = $("scripts"), sHtml = "";
   SCRIPTS.forEach(function(s, i){
