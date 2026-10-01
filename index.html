@@ -165,6 +165,8 @@ input[type=number]{
 .tag{font-size:.62em; vertical-align:middle; margin-left:6px;}
 .rates table{min-width:0;}
 .rates td.name{white-space:normal;}
+.topquote{padding:32px 0 8px;}
+.topquote .tool{margin-top:0;}
 /* ---------- week plan ---------- */
 .weeks{margin-top:34px; display:flex; flex-direction:column; gap:0;}
 .week{display:grid; grid-template-columns:88px 1fr; gap:0; border-top:1px solid var(--line-strong);}
@@ -223,6 +225,42 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important;}}
 </style>
 <div class="wrap">
+<div class="topquote">
+  <span class="lbl">Quick quote · Turf &amp; Tail · per month + HST</span>
+  <div class="tool" id="quote">
+    <div class="controls">
+      <div class="ctrl">
+        <label>Yard size</label>
+        <div class="seg" role="radiogroup" aria-label="Yard size">
+          <input type="radio" name="yard" id="y0" value="0"><label for="y0">Compact<small>to 1,500 sq ft · ~40×30 ft</small></label>
+          <input type="radio" name="yard" id="y1" value="1" checked><label for="y1">Standard<small>1,501–2,500 · ~50×40 ft</small></label>
+          <input type="radio" name="yard" id="y2" value="2"><label for="y2">Large<small>2,501–5,000 · ~75×50 ft</small></label>
+          <input type="radio" name="yard" id="y3" value="3"><label for="y3">Estate or rural<small>over 5,000 sq ft</small></label>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label>Dogs</label>
+        <div class="seg" role="radiogroup" aria-label="Dogs">
+          <input type="radio" name="dogs" id="d1" value="1"><label for="d1">1</label>
+          <input type="radio" name="dogs" id="d2" value="2" checked><label for="d2">2</label>
+          <input type="radio" name="dogs" id="d3" value="3"><label for="d3">3</label>
+          <input type="radio" name="dogs" id="d4" value="4"><label for="d4">4</label>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label>Optional add-ons</label>
+        <div class="addon"><input type="checkbox" id="haul"><label for="haul">Haul-Away</label><span class="dim">$20/mo, any plan</span></div>
+        <div class="addon"><input type="checkbox" id="deo"><label for="deo">Deodorizing</label>
+          $<input type="number" id="deoPrice" value="35" min="35" step="5" aria-label="Deodorizing price per month"><span class="dim">/mo · from $35, by yard size</span></div>
+      </div>
+    </div>
+    <div class="out" id="qOut" aria-live="polite"></div>
+    <p class="hint" id="qDeo" hidden></p>
+    <div class="warnline" id="qWarn" hidden></div>
+    <p class="hint">Every new client starts with the $89 Initial Cleanup (Compact, Standard or Large, 1–2 dogs), paid when booked. Start weekly within 7 days and the $89 comes off the first month. Every other week, Monthly Reset, or no plan: the $89 stands.</p>
+    <p class="hint"><strong>Measuring it in 20 seconds:</strong> pace the yard heel-to-toe — one adult pace ≈ 2.5 ft, so paces across × paces deep × 6 ≈ square feet. A 15 × 25 pace yard is about 2,250 sq ft. Or drop the address into Google Maps satellite view before you leave the house.</p>
+  </div>
+</div>
 <header class="mast">
   <p class="kicker">Turf &amp; Tail · <a href="https://turfandtail.ca">turfandtail.ca</a> · Georgina, Ontario · Partners only, not for clients</p>
   <h1>First Five in Keswick</h1>
@@ -380,40 +418,7 @@ footer ul{margin:.6em 0 0; padding-left:1.1em; display:flex; flex-direction:colu
   <span class="lbl">04 — Your price card</span>
   <div class="prose">
     <h2>Two questions: how many dogs, which yard</h2>
-    <p>Every price below is per month, plus HST. Yard size is the <em>area you actually walk</em>, not the lot size on the listing — a typical Keswick subdivision back yard lands in Standard. Over 5,000 sq ft, rural lots, and 3+ dogs on the cleanup get quoted in person.</p>
-  </div>
-  <div class="tool" id="quote">
-    <div class="controls">
-      <div class="ctrl">
-        <label>Yard size</label>
-        <div class="seg" role="radiogroup" aria-label="Yard size">
-          <input type="radio" name="yard" id="y0" value="0"><label for="y0">Compact<small>to 1,500 sq ft · ~40×30 ft</small></label>
-          <input type="radio" name="yard" id="y1" value="1" checked><label for="y1">Standard<small>1,501–2,500 · ~50×40 ft</small></label>
-          <input type="radio" name="yard" id="y2" value="2"><label for="y2">Large<small>2,501–5,000 · ~75×50 ft</small></label>
-          <input type="radio" name="yard" id="y3" value="3"><label for="y3">Estate or rural<small>over 5,000 sq ft</small></label>
-        </div>
-      </div>
-      <div class="ctrl">
-        <label>Dogs</label>
-        <div class="seg" role="radiogroup" aria-label="Dogs">
-          <input type="radio" name="dogs" id="d1" value="1"><label for="d1">1</label>
-          <input type="radio" name="dogs" id="d2" value="2" checked><label for="d2">2</label>
-          <input type="radio" name="dogs" id="d3" value="3"><label for="d3">3</label>
-          <input type="radio" name="dogs" id="d4" value="4"><label for="d4">4</label>
-        </div>
-      </div>
-      <div class="ctrl">
-        <label>Optional add-ons</label>
-        <div class="addon"><input type="checkbox" id="haul"><label for="haul">Haul-Away</label><span class="dim">$20/mo, any plan</span></div>
-        <div class="addon"><input type="checkbox" id="deo"><label for="deo">Deodorizing</label>
-          $<input type="number" id="deoPrice" value="35" min="35" step="5" aria-label="Deodorizing price per month"><span class="dim">/mo · from $35, by yard size</span></div>
-      </div>
-    </div>
-    <div class="out" id="qOut" aria-live="polite"></div>
-    <p class="hint" id="qDeo" hidden></p>
-    <div class="warnline" id="qWarn" hidden></div>
-    <p class="hint">Every new client starts with the $89 Initial Cleanup (Compact, Standard or Large, 1–2 dogs), paid when booked. Start weekly within 7 days and the $89 comes off the first month. Every other week, Monthly Reset, or no plan: the $89 stands.</p>
-    <p class="hint"><strong>Measuring it in 20 seconds:</strong> pace the yard heel-to-toe — one adult pace ≈ 2.5 ft, so paces across × paces deep × 6 ≈ square feet. A 15 × 25 pace yard is about 2,250 sq ft. Or drop the address into Google Maps satellite view before you leave the house.</p>
+    <p>These are the prices behind the <a href="#quote">quick quote</a> at the top of the page. Every price is per month, plus HST. Yard size is the <em>area you actually walk</em>, not the lot size on the listing — a typical Keswick subdivision back yard lands in Standard. Over 5,000 sq ft, rural lots, and 3+ dogs on the cleanup get quoted in person.</p>
   </div>
   <div class="prose" style="margin-top:38px;">
     <h3>The whole price card on one screen</h3>
